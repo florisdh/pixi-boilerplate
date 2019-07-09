@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "module": "amd",
+        "target": "es5"
+    }
+}
