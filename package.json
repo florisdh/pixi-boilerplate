@@ -1,8 +1,8 @@
 {
-  "name": "pixi-js-starter",
-  "title": "Pixi.js Starter",
+  "name": "pixijs-boilerplate",
+  "title": "Pixi.js Boilerplate",
   "version": "0.0.1",
-  "description": "Pixi.js typescript starter project using webpack.",
+  "description": "Pixi.js boilerplate.",
   "scripts": {
     "dev": "webpack-dev-server --config ./config/webpack.dev.js",
     "dist": "webpack --config ./config/webpack.dist.js"
