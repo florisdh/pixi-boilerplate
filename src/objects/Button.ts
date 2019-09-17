@@ -18,7 +18,7 @@ export default class Button extends PIXI.Container {
         this.background.anchor.set(0.5);
 
         this.text = new PIXI.Text(text, {
-            font: 'Arial 20px'
+            fontSize: 20
         });
         this.text.anchor.set(0.5);
 

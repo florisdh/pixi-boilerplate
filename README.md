@@ -1,9 +1,10 @@
 # pixijs-boilerplate
 
 ## TODO
-- Basic scene management
-- Resize behaviour
 - Add loader
+- Resize behaviour
 - Sample app
 - Some utils
 - Write README
+- Add ads
+- Add analytics

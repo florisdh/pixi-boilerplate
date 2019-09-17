@@ -1,5 +1,7 @@
 import * as PIXI from "pixi.js";
 import {SceneManager} from "pixi-scenes";
+import Splash from "./states/Splash";
+import Boot from "./states/Boot";
 import Menu from "./states/Menu";
 import Gameplay from "./states/Gameplay";
 
@@ -18,7 +20,9 @@ window.onload = () => {
     content.appendChild(app.view);
     
     const scenes: SceneManager = new SceneManager(app);
+    scenes.add('boot', new Boot());
+    scenes.add('splash', new Splash());
     scenes.add('menu', new Menu());
     scenes.add('gameplay', new Gameplay());
-    scenes.start('menu');
+    scenes.start('boot');
 };
