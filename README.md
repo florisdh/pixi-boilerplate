@@ -1,7 +1,6 @@
 # pixijs-boilerplate
 
 ## TODO
-- Add loader
 - Resize behaviour
 - Sample app
 - Some utils
