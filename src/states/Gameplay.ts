@@ -1,5 +1,6 @@
 import * as PIXI from "pixi.js";
 import {Scene} from "pixi-scenes";
+import Loader from "../utils/Loader";
 
 export default class Gameplay extends Scene {
 
@@ -7,16 +8,13 @@ export default class Gameplay extends Scene {
 
     public init(): void {
 
-        // Create a new texture
-        const texture = PIXI.Texture.from('assets/images/bunny.png');
-
         // Setup container for bunnies
         this.bunnies = new PIXI.Container();
         this.addChild(this.bunnies);
 
         // Create a 5x5 grid of bunnies
         for (let i = 0; i < 25; i++) {
-            const bunny = new PIXI.Sprite(texture);
+            const bunny = new PIXI.Sprite(Loader.getAsset('game', 'bunny').texture);
             bunny.anchor.set(0.5);
             bunny.x = (i % 5) * 40;
             bunny.y = Math.floor(i / 5) * 40;
