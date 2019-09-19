@@ -1,4 +1,4 @@
-# pixijs-boilerplate
+# pixi-boilerplate
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)[![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)](https://forthebadge.com)
 
 A fundamental **pixi.js boilerplate** to kickstart your game and start coding directly.
