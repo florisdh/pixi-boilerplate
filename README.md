@@ -41,6 +41,7 @@ Needed a more feature rich version of the [pixi-start](https://github.com/floris
 
 ## TODO
 - Resize behaviour
+- Audio support
 - Sample app
 - Some utils
 - Write README

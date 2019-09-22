@@ -1,9 +1,9 @@
 import * as PIXI from "pixi.js";
 import {SceneManager} from "pixi-scenes";
-import Splash from "./states/Splash";
-import Boot from "./states/Boot";
-import Menu from "./states/Menu";
-import Gameplay from "./states/Gameplay";
+import Splash from "./scenes/Splash";
+import Boot from "./scenes/Boot";
+import Menu from "./scenes/Menu";
+import Gameplay from "./scenes/Gameplay";
 
 window.onload = () => {
     const content: HTMLDivElement = <HTMLDivElement>document.getElementById('content');
