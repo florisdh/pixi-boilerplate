@@ -1,5 +1,6 @@
 import * as PIXI from "pixi.js";
 import {SceneManager} from "pixi-scenes";
+import Resize from "./utils/Resize";
 import Splash from "./scenes/Splash";
 import Boot from "./scenes/Boot";
 import Menu from "./scenes/Menu";
@@ -12,10 +13,9 @@ window.onload = () => {
     }
 
     const app = new PIXI.Application({
-        width: 800,
-        height: 600,
-        backgroundColor: 0x1099bb,
+        autoDensity: true,
         resolution: window.devicePixelRatio || 1,
+        backgroundColor: 0x1099bb,
     });
     content.appendChild(app.view);
     
@@ -25,4 +25,13 @@ window.onload = () => {
     scenes.add('menu', new Menu());
     scenes.add('gameplay', new Gameplay());
     scenes.start('boot');
+
+    // Handle resize
+    window.addEventListener('resize', () => resize());
+    resize();
+
+    function resize() {
+        // TODO: Debounce resize within timeframe
+        Resize.maintainAspect(app.renderer, window.innerWidth, window.innerHeight, 800 / 600);
+    }
 };
