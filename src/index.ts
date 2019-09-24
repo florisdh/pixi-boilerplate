@@ -1,12 +1,12 @@
 import * as PIXI from "pixi.js";
 import {SceneManager} from "pixi-scenes";
-import Resize from "./utils/Resize";
+import Scale from "./utils/Scale";
 import Splash from "./scenes/Splash";
 import Boot from "./scenes/Boot";
 import Menu from "./scenes/Menu";
 import Gameplay from "./scenes/Gameplay";
 
-let app!: PIXI.Application;
+let app: PIXI.Application;
 
 function setup(): void {
     const content: HTMLDivElement = <HTMLDivElement>document.getElementById('content');
@@ -39,14 +39,32 @@ function setup(): void {
     scenes.start('boot');
 }
 
+let timeout: NodeJS.Timeout;
+
+function queResize(): void {
+    if (!app) {
+        return;
+    }
+    if (timeout) {
+        clearTimeout(timeout);
+    }
+    timeout = setTimeout(() => {
+        timeout = null;
+        resize();
+    }, 500);
+}
+
 function resize(): void {
     if (!app) {
         return;
     }
-    // TODO: Debounce resize within timeframe
-    Resize.maintainAspect(app.renderer, window.innerWidth, window.innerHeight, 800 / 600);
+
+    const hasResized: boolean = Scale.maintainAspect(app.renderer, window.innerWidth, window.innerHeight, 800 / 600);
+    if (hasResized) {
+        // TODO: let scene resize
+    }
 }
 
 // Entry
 window.addEventListener('load', setup);
-window.addEventListener('resize', resize);
+window.addEventListener('resize', queResize);
