@@ -6,8 +6,10 @@ import Boot from "./scenes/Boot";
 import Menu from "./scenes/Menu";
 import Gameplay from "./scenes/Gameplay";
 import Throttle from "./utils/Throttle";
+import IScene from "./scenes/IScene";
 
-let app: PIXI.Application;
+let app: PIXI.Application,
+    scenes: SceneManager
 
 function setup(): void {
     const content: HTMLDivElement = <HTMLDivElement>document.getElementById('content');
@@ -30,7 +32,7 @@ function setup(): void {
     resize();
 
     // Add all scenes
-    const scenes: SceneManager = new SceneManager(app);
+    scenes = new SceneManager(app);
     scenes.add('boot', new Boot());
     scenes.add('splash', new Splash());
     scenes.add('menu', new Menu());
@@ -49,8 +51,11 @@ function resize(): void {
     }
 
     const hasResized: boolean = Scale.maintainAspect(app.renderer, window.innerWidth, window.innerHeight, 800 / 600);
-    if (hasResized) {
-        // TODO: let scene resize
+    if (hasResized && scenes) {
+        const activeScene: IScene = scenes.active;
+        if (activeScene && typeof activeScene.resize === 'function') {
+            activeScene.resize();
+        }
     }
 }
 
