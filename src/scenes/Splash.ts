@@ -2,8 +2,9 @@ import * as PIXI from "pixi.js";
 import {Scene} from "pixi-scenes";
 import Loader from "../utils/Loader";
 import LoadIndicator from "../objects/LoadIndicator";
+import IScene from "./IScene";
 
-export default class Splash extends Scene {
+export default class Splash extends Scene implements IScene {
 
     /**
      * Minimal time in ms that the splash should be shown if loading goes too fast.
@@ -24,14 +25,10 @@ export default class Splash extends Scene {
 
         this.icon = new PIXI.Sprite(Loader.getAsset('splash', 'icon').texture);
         this.icon.anchor.set(0.5);
-        this.icon.x = this.app.screen.width / 2;
-        this.icon.y = this.app.screen.height / 2;
         this.addChild(this.icon);
 
         this.loadIndicator = new LoadIndicator();
         this.loadIndicator.anchor.set(0.5);
-        this.loadIndicator.x = this.icon.x;
-        this.loadIndicator.y = this.icon.y + this.icon.height * 0.8;
         this.loadIndicator.on("finished", this.checkComplete.bind(this));
         this.addChild(this.loadIndicator);
     }
@@ -40,6 +37,14 @@ export default class Splash extends Scene {
         this.currentTime = 0;
         this.loadIndicator.reset();
         this.updateStatus();
+        this.resize();
+    }
+
+    public resize(): void {
+        this.icon.x = this.app.screen.width / 2;
+        this.icon.y = this.app.screen.height / 2;
+        this.loadIndicator.x = this.icon.x;
+        this.loadIndicator.y = this.icon.y + this.icon.height * 0.8;
     }
 
     public update(delta: number): void {

@@ -1,8 +1,9 @@
 import * as PIXI from "pixi.js";
 import {Scene} from "pixi-scenes";
 import Loader from "../utils/Loader";
+import IScene from "./IScene";
 
-export default class Gameplay extends Scene {
+export default class Gameplay extends Scene implements IScene {
 
     private bunnies: PIXI.Container;
 
@@ -21,16 +22,22 @@ export default class Gameplay extends Scene {
             this.bunnies.addChild(bunny);
         }
 
-        // Move container to the center
-        this.bunnies.x = this.app.screen.width / 2;
-        this.bunnies.y = this.app.screen.height / 2;
-
         // Center bunny sprite in local container coordinates
         this.bunnies.pivot.x = this.bunnies.width / 2;
         this.bunnies.pivot.y = this.bunnies.height / 2;
     }
 
+    public start(): void {
+        this.resize();
+    }
+
     public update(delta: number): void {
         this.bunnies.rotation -= 0.0005 * delta;
+    }
+
+    public resize(): void {
+        // Move container to the center
+        this.bunnies.x = this.app.screen.width / 2;
+        this.bunnies.y = this.app.screen.height / 2;
     }
 }
