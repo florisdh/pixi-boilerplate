@@ -5,6 +5,7 @@ import Splash from "./scenes/Splash";
 import Boot from "./scenes/Boot";
 import Menu from "./scenes/Menu";
 import Gameplay from "./scenes/Gameplay";
+import Throttle from "./utils/Throttle";
 
 let app: PIXI.Application;
 
@@ -37,21 +38,9 @@ function setup(): void {
 
     // Start loading
     scenes.start('boot');
-}
 
-let timeout: NodeJS.Timeout;
-
-function queResize(): void {
-    if (!app) {
-        return;
-    }
-    if (timeout) {
-        clearTimeout(timeout);
-    }
-    timeout = setTimeout(() => {
-        timeout = null;
-        resize();
-    }, 500);
+    // Handle various window events
+    window.addEventListener('resize', Throttle(resize, 300));
 }
 
 function resize(): void {
@@ -67,4 +56,3 @@ function resize(): void {
 
 // Entry
 window.addEventListener('load', setup);
-window.addEventListener('resize', queResize);
