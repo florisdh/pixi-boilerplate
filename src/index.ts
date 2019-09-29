@@ -1,6 +1,7 @@
 import * as PIXI from "pixi.js";
 import {SceneManager} from "pixi-scenes";
 import Scale from "./utils/Scale";
+import Resize from "./utils/Resize";
 import Splash from "./scenes/Splash";
 import Boot from "./scenes/Boot";
 import Menu from "./scenes/Menu";
@@ -50,7 +51,9 @@ function resize(): void {
         return;
     }
 
-    const hasResized: boolean = Scale.maintainAspect(app.renderer, window.innerWidth, window.innerHeight, 800 / 600);
+    const newResolution: [number, number] = Scale.fitAspect(window.innerWidth, window.innerHeight, 800 / 600),
+        hasResized: boolean = Resize(app.renderer, newResolution[0], newResolution[1]);
+
     if (hasResized && scenes) {
         const activeScene: IScene = scenes.active;
         if (activeScene && typeof activeScene.resize === 'function') {

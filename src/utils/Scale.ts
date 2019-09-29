@@ -1,33 +1,22 @@
 import * as PIXI from "pixi.js";
 
-export default class Resize {
+export default class Scale {
 
     /**
-     * Scales the renderer to maintain it's aspect ratio at all time and fits withint the given size.
-     * @param {PIXI.Renderer} renderer 
+     * Fits the width and height into the aspect ratio.
      * @param {number} width 
      * @param {number} height 
      * @param {number} aspect 
-     * @returns {boolean} Whether the size actually changed or not.
+     * @returns {tuple} Final width and height
      */
-    public static maintainAspect(renderer: PIXI.Renderer, width: number, height: number, aspect: number = 16/9): boolean {
+    public static fitAspect(width: number, height: number, aspect: number = 16/9): [number, number] {
         // Enforce aspect
         if (width / height > aspect) {
             width = height * aspect;
         } else {
             height = width / aspect;
         }
-
-        // Pixel perfect?
-        //width |= 0;
-        //height |= 0;
-
-        if (width !== renderer.width || height !== renderer.height) {
-            renderer.resize(width, height);
-            return true;
-        }
-
-        return false;
+        return [width, height];
     }
 
 }
