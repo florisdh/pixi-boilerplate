@@ -40,10 +40,10 @@ You can browse the resulting files in the ``_build/dist`` directory or run ``htt
 Needed a more feature rich version of the [pixi-start](https://github.com/florisdh/pixi-start) which contains more setup tools and scripts needed in most game projects.
 
 ## TODO
-- Resize behaviour
 - Audio support
-- Sample app
-- Some utils
-- Write README
 - Add ads
+- Improve build pipeline
+- Sample app
+- Write README
+- Some utils
 - Add analytics
