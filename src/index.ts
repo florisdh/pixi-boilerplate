@@ -1,5 +1,6 @@
 import * as PIXI from "pixi.js";
 import {SceneManager} from "pixi-scenes";
+import 'pixi-sound';
 import Scale from "./utils/Scale";
 import Resize from "./utils/Resize";
 import Splash from "./scenes/Splash";
