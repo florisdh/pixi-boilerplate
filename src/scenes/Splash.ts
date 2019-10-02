@@ -19,7 +19,8 @@ export default class Splash extends Scene implements IScene {
     public init(): void {
         // Start loading game assets
         this.loader = Loader.loadBatch('game', {
-            bunny: 'assets/images/bunny.png'
+            bunny: 'assets/images/bunny.png',
+            music: 'assets/sounds/music.{ogg,mp3}'
         });
         this.loader.on("progress", this.updateStatus.bind(this));
 

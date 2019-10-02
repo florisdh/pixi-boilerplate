@@ -1,6 +1,7 @@
 import {Scene} from "pixi-scenes";
 import Button from "../objects/Button";
 import IScene from "./IScene";
+import Loader from "../utils/Loader";
 
 export default class Menu extends Scene implements IScene {
 
@@ -10,6 +11,12 @@ export default class Menu extends Scene implements IScene {
         this.startButton = new Button(this.app, 'START');
         this.startButton.on('click', this.startGame.bind(this));
         this.addChild(this.startButton);
+
+        // Play music
+        Loader.getAsset('game', 'music').sound.play({
+            loop: true,
+            singleInstance: true
+        });
     }
 
     public start(): void {
