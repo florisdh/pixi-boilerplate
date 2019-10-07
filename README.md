@@ -37,7 +37,7 @@ npm run dist
 You can browse the resulting files in the ``_build/dist`` directory or run ``http-server`` here to see it in the browser.
 
 ## About
-Needed a more feature rich version of the [pixi-start](https://github.com/florisdh/pixi-start) which contains more setup tools and scripts needed in most game projects.
+Needed a more feature rich version of the [pixi-starter](https://github.com/florisdh/pixi-starter) which contains more setup tools and scripts needed in most game projects.
 
 ## TODO
 - Add ads
