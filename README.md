@@ -40,9 +40,10 @@ You can browse the resulting files in the ``_build/dist`` directory or run ``htt
 Needed a more feature rich version of the [pixi-starter](https://github.com/florisdh/pixi-starter) which contains more setup tools and scripts needed in most game projects.
 
 ## TODO
-- Add ads
-- Improve build pipeline
-- Sample app
-- Write README
-- Some utils
-- Add analytics
+- Add webfont loader
+- Implement gd-ads
+- Including smaller @pixi packages
+- Lazy load external libs
+- Write sample app
+- Improve README
+- Add google analytics
