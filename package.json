@@ -1,7 +1,7 @@
 {
   "name": "pixi-boilerplate",
   "title": "Pixi Boilerplate",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Pixi boilerplate.",
   "scripts": {
     "dev": "webpack-dev-server --config ./config/webpack.dev.js",

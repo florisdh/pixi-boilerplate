@@ -17,12 +17,16 @@ export default class Splash extends Scene implements IScene {
     private currentTime: number;
 
     public init(): void {
-        // Start loading game assets
-        this.loader = Loader.loadBatch('game', {
+
+        const assets: any = {
             bunny: 'assets/images/bunny.png',
-            music: 'assets/sounds/music.{ogg,mp3}'
-        });
-        this.loader.on("progress", this.updateStatus.bind(this));
+            music: 'assets/sounds/music.{ogg,mp3}'            
+        };
+
+        // Start loading game assets
+        this.loader = Loader.loadBatch('game', assets);
+        this.loader.on("progress", this.updateStatus.bind(this, null));
+        this.loader.on("complete", this.updateStatus.bind(this, 100));
 
         this.icon = new PIXI.Sprite(Loader.getAsset('splash', 'icon').texture);
         this.icon.anchor.set(0.5);
@@ -58,8 +62,8 @@ export default class Splash extends Scene implements IScene {
         }
     }
 
-    private updateStatus(): void {
-        this.loadIndicator.progress = this.loader.progress;
+    private updateStatus(progress?: number): void {
+        this.loadIndicator.progress = progress || this.loader.progress;
     }
 
     private checkComplete(): void {
