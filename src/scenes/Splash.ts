@@ -1,6 +1,7 @@
 import * as PIXI from "pixi.js";
 import {Scene} from "pixi-scenes";
 import Loader from "../utils/Loader";
+import * as WebFont from 'webfontloader';
 import LoadIndicator from "../objects/LoadIndicator";
 import IScene from "./IScene";
 
@@ -17,6 +18,12 @@ export default class Splash extends Scene implements IScene {
     private currentTime: number;
 
     public init(): void {
+
+        WebFont.load({
+            google: {
+                families: ['Open Sans']
+            }
+        });
 
         const assets: any = {
             bunny: 'assets/images/bunny.png',

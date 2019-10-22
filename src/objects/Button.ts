@@ -18,7 +18,8 @@ export default class Button extends PIXI.Container {
         this.background.anchor.set(0.5);
 
         this.text = new PIXI.Text(text, {
-            fontSize: 20
+            fontSize: 20,
+            fontFamily: 'Open Sans'
         });
         this.text.anchor.set(0.5);
 
